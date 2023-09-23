@@ -8,10 +8,13 @@ import {
   List,
 } from './contacts.styled';
 import { useSelector } from 'react-redux';
+import { getContacts, getFilter } from 'redux/selectors';
+import { getIsLoading } from 'redux/selectors';
 
 export const ContactsList = ({ handleChange }) => {
-  const contacts = useSelector(state => state.contacts.list);
-  const filter = useSelector(state => state.filter);
+  const contacts = useSelector(getContacts);
+  const filter = useSelector(getFilter);
+  const isLoading = useSelector(getIsLoading);
 
   const filterContactsList = contactsList => {
     return contactsList.filter(({ name }) =>
@@ -23,11 +26,15 @@ export const ContactsList = ({ handleChange }) => {
     <ContactsListContainer>
       <ContactsListTitle>Contacts</ContactsListTitle>
       <Filter handleChange={handleChange} />
-      <List>
-        {filterContactsList(contacts).map(contact => (
-          <EachContact key={nanoid(10)} contact={contact} />
-        ))}
-      </List>
+      {isLoading ? (
+        <h1>Loading...</h1>
+      ) : (
+        <List>
+          {filterContactsList(contacts).map(contact => (
+            <EachContact key={nanoid(10)} contact={contact} />
+          ))}
+        </List>
+      )}
     </ContactsListContainer>
   );
 };

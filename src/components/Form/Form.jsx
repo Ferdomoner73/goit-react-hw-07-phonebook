@@ -4,7 +4,7 @@ import { Formik, Form, ErrorMessage, Field } from 'formik';
 import * as Yup from 'yup';
 import { FormSection, FormTitle } from './form.styled';
 import { useDispatch, useSelector } from 'react-redux';
-import { add } from '../../redux/contacts/contactsSlice';
+import { addContact } from '../../redux/contactsOperations';
 
 const SignupSchema = Yup.object().shape({
   name: Yup.string()
@@ -23,7 +23,7 @@ export const ContactsForm = () => {
   const nameUniqueId = nanoid(20);
   const telUniqueId = nanoid(25);
 
-  const contacts = useSelector(state => state.contacts.list);
+  const contacts = useSelector(state => state.contacts.items);
   const dispatch = useDispatch();
 
   const addNewContact = e => {
@@ -37,7 +37,7 @@ export const ContactsForm = () => {
       }
     }
 
-    dispatch(add(e));
+    dispatch(addContact(e));
   };
 
   return (
