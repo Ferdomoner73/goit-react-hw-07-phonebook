@@ -1,8 +1,8 @@
 {
-  "name": "phonebook-graded-version-with-redux",
-  "version": "0.3.0",
+  "name": "phonebook-graded-version-with-redux-toolkit-and-backend",
+  "version": "0.4.0",
   "private": true,
-  "homepage": "https://Ferdomoner73.github.io/goit-react-hw-06-phonebook/",
+  "homepage": "https://Ferdomoner73.github.io/goit-react-hw-07-phonebook/",
   "dependencies": {
     "@emotion/react": "^11.11.1",
     "@emotion/styled": "^11.11.0",
